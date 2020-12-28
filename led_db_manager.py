@@ -21,7 +21,7 @@ class LED_DB_Manager():
 						"#15e8ff #96c291 #ff9b23 #ff703f #ff4b57 #ff266f #ff0087",]
 
 		self.pattern_name_list = ["magnetic", "vinyl", "coalesce"]
-		self.special_mode_list = ["special"]
+		self.special_mode_list = ["on", "off", "retail"]
 
 	def __type_str_modify(self):
 		type_str = ""
@@ -92,17 +92,17 @@ class LED_DB_Manager():
 		self.cursor.execute(command)
 
 		for i in range(0, len(self.special_mode_list)):
-			command = """insert into config_table values('ui.led.%s_pattern.count','%d','%d',1,0,0);"""%(self.special_mode_list[i], len(self.special_mode_list), len(self.special_mode_list))
+			command = """insert into config_table values('ui.led.%s_pattern.count','%d','%d',1,0,0);"""%(self.special_mode_list[i], 1, 1)
 			self.cursor.execute(command)
 			command = """insert into config_table values('ui.led.%s_pattern.begin','%d','%d',1,0,0);"""%(self.special_mode_list[i], int(self.total) + i, int(self.total) + i)
 			self.cursor.execute(command)
-			command = """insert into config_table values("ui.led.pattern.%d.type", "%s", "pulse", 67, 0, 0);"""%(int(self.total), self.special_mode_list[i])
+			command = """insert into config_table values("ui.led.pattern.%d.type", "%s", "pulse", 67, 0, 0);"""%(int(self.total+i), self.special_mode_list[i])
 			self.cursor.execute(command)
-			command = """insert into config_table values("ui.led.pattern.%d.index", "%d", "0", 68, 0, 0);"""%(int(self.total), i)
+			command = """insert into config_table values("ui.led.pattern.%d.index", "%d", "0", 68, 0, 0);"""%(int(self.total+i), 0)
 			self.cursor.execute(command)
-			command = """insert into config_table values('ui.led.%s_pattern.%d.rate','%d','50000',%d,0,0);"""%(self.special_mode_list[i], i, 50000, self.int_datatype)
+			command = """insert into config_table values('ui.led.%s_pattern.%d.rate','%d','50000',%d,0,0);"""%(self.special_mode_list[i], 0, 50000, self.int_datatype)
 			self.cursor.execute(command)
-			command = """insert into config_table values('ui.led.%s_pattern.%d.group','%d','0',%d,0,0);"""%(self.special_mode_list[i], i, 5, self.int_datatype)
+			command = """insert into config_table values('ui.led.%s_pattern.%d.group','%d','0',%d,0,0);"""%(self.special_mode_list[i], 0, 5, self.int_datatype)
 			self.cursor.execute(command)
 
 		self.total = self.total + len(self.special_mode_list)
@@ -133,7 +133,7 @@ class LED_DB_Manager():
 		self.__pattern_data_update()
 		self.cursor.execute(""" select * from config_table where key="ui.led.pattern.count"
 					or key like "%magnetic%" or key like "%vinyl%" or key like "%coalesce%"
-					or key like "%customize%" or key like "%special%";""")
+					or key like "%customize%" or key like "%on%" or key like "%off%" or key like "%retail%";""")
 		for i in self.cursor:
 			print("[LED DB Manager] Inserted : " + str(i))
 
