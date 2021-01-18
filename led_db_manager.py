@@ -9,19 +9,20 @@ class LED_DB_Manager():
 		self.color_datatype = 0
 		self.total = 0
 		self.color_list = ["#2ccdff #5aa8eb #8486d8 #aa68c7 #ce4bb7 #eb34aa #fe25a1",
-                     	   "#0064e6 #007be4 #008fe1 #00a2df #00b2de #00c0dc #00cadb",
-					       "#ffe600 #ffbb00 #ff9100 #ff7c00 #ff6a00 #ff5e00 #ff5e00",
-						   "#ff009c #ff299a #ff5297 #ff6c9e #ff78ac #ff84ba #ff91ca",
-						   "#1fe6c3 #18cfb7 #12b8ab #0ca4a1 #079297 #03828f #00788a",
-						   "#ffff00 #ff9766 #ff6596 #ac8cb8 #58b2db #00dbff #00dbff",
-						   "#1fe6c3 #6ce59b #b1e577 #f9e452 #a7c065 #559d77 #00788a",
-						   "#edc46a #f7a7a0 #fd97bf #ff91ca #fd97bf #f7a7a0 #edc46a",
-						   "#00cadb #8faad1 #e397cc #ff91ca #e397cc #8faad1 #00cadb",
-						   "#d8c93a #f29184 #a795b8 #00d0de #a8a25a #f08648 #d17db5",
-						   "#15e8ff #2fe2e4 #ff9b23 #ff703f #ff4b57 #ff266f #ff0087",]
+							"#0064e6 #007be4 #008fe1 #00a2df #00b2de #00c0dc #00cadb",
+							"#ffe600 #ffbb00 #ff9100 #ff7c00 #ff6a00 #ff5e00 #ff5e00",
+							"#ff009c #ff299a #ff5297 #ff6c9e #ff78ac #ff84ba #ff91ca",
+							"#1fe6c3 #18cfb7 #12b8ab #0ca4a1 #079297 #03828f #00788a",
+							"#ffff00 #ff9766 #ff6596 #ac8cb8 #58b2db #00dbff #00dbff",
+							#"#1fe6c3 #6ce59b #b1e577 #f9e452 #a7c065 #559d77 #00788a",
+							#"#edc46a #f7a7a0 #fd97bf #ff91ca #fd97bf #f7a7a0 #edc46a",
+							#"#00cadb #8faad1 #e397cc #ff91ca #e397cc #8faad1 #00cadb",
+							#"#d8c93a #f29184 #a795b8 #00d0de #a8a25a #f08648 #d17db5",
+							"#15e8ff #2fe2e4 #ff9b23 #ff703f #ff4b57 #ff266f #ff0087",]
+
 
 		self.pattern_name_list = ["magnetic", "vinyl", "coalesce"]
-		self.special_mode_list = ["on", "off", "retail"]
+		self.special_mode_list = ["on", "off", "retail", "none"]
 
 	def __type_str_modify(self):
 		type_str = ""
